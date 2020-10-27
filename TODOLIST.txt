@@ -1,0 +1,8 @@
+Modulo de verificacion
+	Hay que hacer un servidor html al que pedirte el template
+	https://github.com/spatie/browsershot
+	Hacer replaces de espacios, tab, etc y comparar con el codigo fuente
+
+Hacer mas pruebas
+Añadir mas 'methods'
+Añadir loops
