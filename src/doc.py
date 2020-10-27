@@ -59,4 +59,4 @@ Usage examples:
 	./html2js.py test/html/parametrized_service_div.html test/js/parametrized_service_div.js -f service_div -t test/templates/parametrized_service_div.html --param SERVICE text service_name --param OK text num_ok --param WARN text num_warnings --param ERR text num_errors -v
 '''
 
-repo = 'https://github.com/vLabayen'
+repo = 'https://github.com/vLabayen/html2js'
