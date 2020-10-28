@@ -41,23 +41,23 @@
 			let td_9 = document.createElement('td');
 			td_9.style = "text-align: center";
 
-			td_1.appendChild(document.createTextNode(' FECHA '));
+			td_1.appendChild(document.createTextNode(fecha));
 			tr_1.appendChild(td_1);
-			td_2.appendChild(document.createTextNode(' CLIENTE '));
+			td_2.appendChild(document.createTextNode(cliente));
 			tr_1.appendChild(td_2);
-			td_3.appendChild(document.createTextNode(' USER '));
+			td_3.appendChild(document.createTextNode(user));
 			tr_1.appendChild(td_3);
-			td_4.appendChild(document.createTextNode(' SERVER '));
+			td_4.appendChild(document.createTextNode(server));
 			tr_1.appendChild(td_4);
-			td_5.appendChild(document.createTextNode(' NAT '));
+			td_5.appendChild(document.createTextNode(nat));
 			tr_1.appendChild(td_5);
-			td_6.appendChild(document.createTextNode(' DESTINO '));
+			td_6.appendChild(document.createTextNode(destino));
 			tr_1.appendChild(td_6);
-			td_7.appendChild(document.createTextNode(' DURACION '));
+			td_7.appendChild(document.createTextNode(duracion));
 			tr_1.appendChild(td_7);
-			td_8.appendChild(document.createTextNode(' START '));
+			td_8.appendChild(document.createTextNode(start));
 			tr_1.appendChild(td_8);
-			td_9.appendChild(document.createTextNode(' END '));
+			td_9.appendChild(document.createTextNode(end));
 			tr_1.appendChild(td_9);
 			return tr_1;
 		}

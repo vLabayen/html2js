@@ -30,7 +30,7 @@ def extract_element(e, params):
 
 		#Asign variable name
 		for p in params:
-			if str(e) == p['pattern']:
+			if str(e).replace(' ', '') == p['pattern']:
 				element['varname'] = p['varname']
 				element['param'] = True
 				element['type'] = p['type']

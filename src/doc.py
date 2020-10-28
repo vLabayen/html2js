@@ -59,7 +59,7 @@ usage_examples = '''Usage examples:
 	./html2js.py test/html/service_div.html test/js/service_div.js -f service_div -t test/templates/service_div.html -v
 	./html2js.py test/html/parametrized_service_div.html test/js/parametrized_service_div.js -f service_div -t test/templates/parametrized_service_div.html --param SERVICE text service_name --param OK text num_ok --param WARN text num_warnings --param ERR text num_errors -v
 	./html2js.py -f table_header -v test/html/table_header.html test/js/table_header.js -i 2
-	./html2js.py -f table_row -v -i 2 test/html/table_row.html test/js/table_row.js
+	./html2js.py -f table_row -v -i 2 test/html/table_row.html test/js/table_row.js -p FECHA text fecha -p CLIENTE text cliente -p USER text user -p SERVER text server -p NAT text nat -p DESTINO text destino -p DURACION text duracion -p START text start -p END text end
 '''
 
 repo = 'https://github.com/vLabayen/html2js'
