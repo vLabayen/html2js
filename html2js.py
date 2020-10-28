@@ -10,14 +10,10 @@ from bs4 import BeautifulSoup
 sys.path.insert(0, os.path.abspath('src'))
 from extract_elements import extract_element
 from generate_code import *
-from doc import doc_str, repo
+from doc import doc_str, repo, usage_examples
 
 #Define script arguments
-parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter, epilog='''Usage examples:
-	./html2js.py test/html/simple_div.html test/js/simple_div.js -f simple_div -t test/templates/simple_div.html -v
-	./html2js.py test/html/service_div.html test/js/service_div.js -f service_div -t test/templates/service_div.html -v
-	./html2js.py test/html/parametrized_service_div.html test/js/parametrized_service_div.js -f service_div -t test/templates/parametrized_service_div.html --param SERVICE text service_name --param OK text num_ok --param WARN text num_warnings --param ERR text num_errors -v
-''')
+parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter, epilog=usage_examples)
 parser.add_argument('input_html', help="File with html code")
 parser.add_argument('output_js', help="File to write js function")
 parser.add_argument('-d', '--doc', help="Show extended documentation and exit. input_html and output_js must be provided to show the doc (blame argparse)", default=False, action="store_true")
@@ -25,12 +21,16 @@ parser.add_argument('-f', '--function-name', help="Output function name", defaul
 parser.add_argument('-t', '--test', help="Generate test html file", default=None, metavar="test_file")
 parser.add_argument('-v', '--verbose', help="Display generated code in stdout", default=False, action="store_true")
 parser.add_argument('-p', '--param', help="Add function parameter. Syntax : --param <pattern> <type> [variable_name]", default=[], action='append', nargs='+', metavar='param_spec')
+parser.add_argument('-i', '--indent', help="Starting indent in tabs", default=0, type=int, metavar="n_tabs")
 parser.add_argument('--template-file', help="Html test template file", default="test/templates/template.html", metavar='template')
 parser.add_argument('--supress-warning', help="Supress the generated warning when creating a test file with element type params", default=False, action='store_true')
 parser.add_argument('--remove-coments', help="Remove the comments before the function declaration", default=False, action='store_true')
 args = parser.parse_args()
 
-if args.doc: sys.exit(doc_str)
+if args.doc:
+	print(doc_str)
+	print(usage_examples)
+	sys.exit()
 
 #Verify and parse param args
 for i,params in enumerate(args.param):
@@ -60,7 +60,7 @@ soup = BeautifulSoup(html_code, features="html.parser")
 element_tree = [extract_element(c, args.param) for c in soup.children]
 
 #Generate js code
-lines = generate_function(args, element_tree, repo, src_code, not args.remove_coments)
+lines = generate_function(args, element_tree, repo, src_code, not args.remove_coments, args.indent)
 
 #Show generated code if verbose
 if args.verbose: print(''.join(lines), end="")
