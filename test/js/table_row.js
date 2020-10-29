@@ -11,7 +11,7 @@
 		//  <td style="text-align: center"> START </td>
 		//  <td style="text-align: center"> END </td>
 		//</tr>
-		function table_row(fecha, cliente, user, server, nat, destino, duracion, start, end) {
+		function table_row(fecha) {
 			let tr_1 = document.createElement('tr');
 
 			let td_1 = document.createElement('td');
@@ -43,21 +43,21 @@
 
 			td_1.appendChild(document.createTextNode(fecha));
 			tr_1.appendChild(td_1);
-			td_2.appendChild(document.createTextNode(cliente));
+			td_2.appendChild(document.createTextNode(' CLIENTE '));
 			tr_1.appendChild(td_2);
-			td_3.appendChild(document.createTextNode(user));
+			td_3.appendChild(document.createTextNode(' USER '));
 			tr_1.appendChild(td_3);
-			td_4.appendChild(document.createTextNode(server));
+			td_4.appendChild(document.createTextNode(' SERVER '));
 			tr_1.appendChild(td_4);
-			td_5.appendChild(document.createTextNode(nat));
+			td_5.appendChild(document.createTextNode(' NAT '));
 			tr_1.appendChild(td_5);
-			td_6.appendChild(document.createTextNode(destino));
+			td_6.appendChild(document.createTextNode(' DESTINO '));
 			tr_1.appendChild(td_6);
-			td_7.appendChild(document.createTextNode(duracion));
+			td_7.appendChild(document.createTextNode(' DURACION '));
 			tr_1.appendChild(td_7);
-			td_8.appendChild(document.createTextNode(start));
+			td_8.appendChild(document.createTextNode(' START '));
 			tr_1.appendChild(td_8);
-			td_9.appendChild(document.createTextNode(end));
+			td_9.appendChild(document.createTextNode(' END '));
 			tr_1.appendChild(td_9);
 			return tr_1;
 		}

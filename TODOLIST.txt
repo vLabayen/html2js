@@ -1,5 +1,3 @@
-Update docu to add indent
-
 Add tipos de datos parametrizables
 	Tipo htmlfile, que te deje darle un fichero html y te genere dos funciones utilizando el mismo script, y nestee el resultado de una funcion en el otro
 	Tipo property, que por ejemplo puedas parametrizar el color en el style
@@ -12,3 +10,4 @@ Modulo de verificacion
 Hacer mas pruebas
 Añadir mas 'methods'
 Añadir loops
+Añadir el optional_flag de params que se me ha olvidado :(

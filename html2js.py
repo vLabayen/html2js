@@ -20,7 +20,7 @@ parser.add_argument('-d', '--doc', help="Show extended documentation and exit. i
 parser.add_argument('-f', '--function-name', help="Output function name", default="func", metavar="function_name")
 parser.add_argument('-t', '--test', help="Generate test html file", default=None, metavar="test_file")
 parser.add_argument('-v', '--verbose', help="Display generated code in stdout", default=False, action="store_true")
-parser.add_argument('-p', '--param', help="Add function parameter. Syntax : --param <pattern> <type> [variable_name]", default=[], action='append', nargs='+', metavar='param_spec')
+parser.add_argument('-p', '--param', help="Add function parameter. Syntax : --param <pattern> <type> [optional_flags]", default=[], action='append', nargs='+', metavar='param_spec')
 parser.add_argument('-i', '--indent', help="Starting indent in tabs", default=0, type=int, metavar="n_tabs")
 parser.add_argument('--template-file', help="Html test template file", default="test/templates/template.html", metavar='template')
 parser.add_argument('--supress-warning', help="Supress the generated warning when creating a test file with element type params", default=False, action='store_true')
@@ -34,12 +34,19 @@ if args.doc:
 
 #Verify and parse param args
 for i,params in enumerate(args.param):
-	if len(params) < 2 or len(params) > 3: raise ate('Param args must be in the syntax <pattern> <type> [variable_name]')
-	if params[1] not in ['element', 'text']: raise ate("Second argument must be either 'element' or 'text'")
+	supported_types = ['element', 'text']
+	supported_flags = ['variable_name']
+
+	if len(params) < 2: raise ate('Param args must be in the syntax <pattern> <type> [optional_flags]')
+	if params[1] not in supported_types: raise ate("Second argument must be {} or {}".format(','.join(supported_types[:-1]), supported_types[-1]))
+
+	try: flags = {flag_name : flag_value for flag_name,flag_value in (provided_flag.split("=") for provided_flag in params[2:]) if flag_name in supported_flags}
+	except ValueError: raise ate("Optional flags must be provided in the syntax <flag_name>=<flag_value>")
+
 	args.param[i] = {
 		'pattern' : params[0],
 		'type' : params[1],
-		'varname' : params[2] if len(params) == 3 else 'param_{}'.format(i)
+		'varname' : flags['variable_name'] if 'variable_name' in flags else 'param_{}'.format(i)
 	}
 
 #Raise warning if --test is used with --param of element type.
