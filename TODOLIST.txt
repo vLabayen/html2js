@@ -1,5 +1,9 @@
 Update docu to add indent
 
+Add tipos de datos parametrizables
+	Tipo htmlfile, que te deje darle un fichero html y te genere dos funciones utilizando el mismo script, y nestee el resultado de una funcion en el otro
+	Tipo property, que por ejemplo puedas parametrizar el color en el style
+
 Modulo de verificacion
 	Hay que hacer un servidor html al que pedirte el template
 	https://github.com/spatie/browsershot
