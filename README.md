@@ -1,6 +1,4 @@
-# html2js
-
-&nbsp;  
+# html2js  
 This script takes as input a html file and writes to a file a js function that generates the given html  
 &nbsp;  
 
